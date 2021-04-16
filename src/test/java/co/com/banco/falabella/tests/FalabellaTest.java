@@ -3,38 +3,14 @@ package co.com.banco.falabella.tests;
 import co.com.banco.falabella.models.CellPhoneSummaryOrder;
 import co.com.banco.falabella.pages.FalabellaDispatchPage;
 import co.com.banco.falabella.pages.GoogleHomePage;
-import co.com.banco.falabella.utils.ReadFilePropierties;
 import co.com.banco.falabella.utils.enums.EnumUrls;
-import java.io.IOException;
-import java.time.Duration;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-public class FalabellaTest {
-
-  private WebDriver driver;
-
-  @Before
-  public void setup() throws IOException {
-    ReadFilePropierties fileProperties = new ReadFilePropierties();
-    fileProperties.loadFile("./src/test/resources/file_configuration.properties");
-    System.setProperty(fileProperties.getProperty("DRIVER_SETUP"),
-        fileProperties.getProperty("PATH_DRIVER") + fileProperties.getProperty("DRIVER"));
-    ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments("start-maximized");
-    driver = new ChromeDriver(chromeOptions);
-    driver.manage().timeouts().implicitlyWait(
-        Duration.ofSeconds(Integer.parseInt(fileProperties.getProperty("IMPLICIT_WAIT"))));
-
-  }
+public class FalabellaTest extends Hook {
 
   @Test
-  public void ValidationOrderSummary() {
+  public void ValidationOrderSummary() throws InterruptedException {
     CellPhoneSummaryOrder articleInitial = new CellPhoneSummaryOrder(
         "Celular Xiaomi Redmi Note 8 128GB", "XIAOMI", "1",
         "4919209", "749.800");
@@ -49,10 +25,4 @@ public class FalabellaTest {
         falabellaDispatchPage.buildObjectCellPhone().toString());
 
   }
-
-  @After
-  public void closeNavigate() {
-    driver.close();
-  }
-
 }
