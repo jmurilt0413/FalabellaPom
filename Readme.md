@@ -8,12 +8,14 @@ Este proyecto fue creado con el fin de poner a prueba los skill para automatizar
 La prueba consiste en ingresar a la pagina de Fallabela desde el buscador de google,
 buscar celulares y agregar uno a la bolsa de compras.
 
+Test creado con TestNg
+
 ## Tecnologías
 ***
 Esta es la lista de tecnologías utilizadas:
 
 * [Patron Page Object Model]()
-* [Junit](https://mvnrepository.com/artifact/junit/junit/4.12) 
+* [TestNg](https://mvnrepository.com/artifact/org.testng/testng/6.8.8) 
 * [ChromeDriver 88.0.4324.96](https://chromedriver.chromium.org/) 
 * [Selenium - Java](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.0.0-beta-1)
 ## Ejecución
@@ -24,10 +26,8 @@ Se debe seguir los siguientes pasos
   la version de chrome driver correspondiente en caso que no corresponda
    "src/test/resources/webdriver/windows/chromedriver.exe"
 
-* Se puede ejecutar todo el proyecto desde la terminal de gradle con el
-  comando $gradle clean test
+* Ejecutar la clase FalabellaTest en intelliJ configurada como TestNg 
 
-* Ejecutar la clase CompraCelularRunner en intelliJ, puede correr con gradle
-  o Junit
+* El reporte se genera en la carpeta test-output/
 
 ```
