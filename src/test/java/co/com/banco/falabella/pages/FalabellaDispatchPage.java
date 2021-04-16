@@ -1,8 +1,11 @@
 package co.com.banco.falabella.pages;
 
 import co.com.banco.falabella.models.CellPhoneSummaryOrder;
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FalabellaDispatchPage {
 
@@ -26,13 +29,15 @@ public class FalabellaDispatchPage {
       "//*[@class='fbra_text fbra_test_orderSummary__itemPrice fbra_orderSummary__itemPrice']");
 
   public CellPhoneSummaryOrder buildObjectCellPhone() {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(lblSummaryPrice)).click();
     return new CellPhoneSummaryOrder(
         driver.findElement(lblReferencyCellPhone).getText(),
         driver.findElement(lblBrandCellPhone).getText(),
         driver.findElement(lblQuantityProducts).getText().replace("(", "")
             .replace(")", ""),
-        driver.findElement(lblProductCode).getText(),
-        driver.findElement(lblTotalItemPrice).getText());
+        driver.findElement(lblProductCode).getText().replace("digo: ",""),
+        driver.findElement(lblTotalItemPrice).getText().replace("$", ""));
   }
 
 }

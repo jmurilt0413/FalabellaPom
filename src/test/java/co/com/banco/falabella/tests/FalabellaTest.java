@@ -8,6 +8,8 @@ import co.com.banco.falabella.pages.GoogleHomePage;
 import co.com.banco.falabella.utils.ReadFilePropierties;
 import co.com.banco.falabella.utils.enums.EnumUrls;
 import java.io.IOException;
+import java.time.Duration;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,27 +30,35 @@ public class FalabellaTest {
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments("start-maximized");
     driver = new ChromeDriver(chromeOptions);
+    driver.manage().timeouts().implicitlyWait(
+        Duration.ofSeconds(Integer.parseInt(fileProperties.getProperty("IMPLICIT_WAIT"))));
 
   }
 
   @Test
   public void ValidationOrderSummary() {
-    CellPhoneSummaryOrder articleInitial = new CellPhoneSummaryOrder("Celular Xiaomi Redmi Note 8 128GB", "XIAOMY", "1",
+    CellPhoneSummaryOrder articleInitial = new CellPhoneSummaryOrder(
+        "Celular Xiaomi Redmi Note 8 128GB", "XIAOMY", "1",
         "4919209", "749.800");
-    CellPhoneSummaryOrder itemObtained;
     GoogleHomePage googleHomePage = new GoogleHomePage(driver);
     FalabellaDispatchPage falabellaDispatchPage = new FalabellaDispatchPage(driver);
 
     driver.get(EnumUrls.getUrl("Google"));
     googleHomePage.searchPage("Falabella").selectPageFalabella().closeAd().closeAlertRegistry()
         .searchArticle("Celulares").selectProduct("Celular Xiaomi Redmi Note 8 128GB")
+        .GoToBagPayShopping()
         .selectInsuranceCoverage("Asegura tu Pantalla").GoToDispach();
 
-    itemObtained = falabellaDispatchPage.buildObjectCellPhone();
+    System.out.println(falabellaDispatchPage.buildObjectCellPhone().toString());
+    System.out.println(articleInitial.toString());
 
-    Assert.assertThat(articleInitial, is(itemObtained));
+    Assert.assertThat(falabellaDispatchPage.buildObjectCellPhone(), is(articleInitial));
 
+  }
 
+  @After
+  public void closeNavigate(){
+    driver.close();
   }
 
 }

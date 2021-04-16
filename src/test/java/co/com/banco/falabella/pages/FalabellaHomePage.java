@@ -1,7 +1,11 @@
 package co.com.banco.falabella.pages;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FalabellaHomePage {
 
@@ -22,13 +26,15 @@ public class FalabellaHomePage {
  }
 
   public FalabellaHomePage closeAlertRegistry(){
-    driver.findElement(btnNoThanksAlertRegistry).click();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(btnNoThanksAlertRegistry)).click();
     return this;
   }
 
   public FalabellaListProductsPage searchArticle(String article){
    driver.findElement(txtSearch).sendKeys(article);
-   driver.findElement(lblArticle).click();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(lblArticle)).click();
    return new FalabellaListProductsPage(driver);
   }
 

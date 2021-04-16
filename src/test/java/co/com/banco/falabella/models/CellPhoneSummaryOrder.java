@@ -2,8 +2,6 @@ package co.com.banco.falabella.models;
 
 public class CellPhoneSummaryOrder {
 
-  public CellPhoneSummaryOrder(){}
-
   public CellPhoneSummaryOrder(String cellPhoneReferency, String brandCellPhone,
       String quantityProducts, String productCode, String totalItemPrice) {
     this.cellPhoneReferency = cellPhoneReferency;

@@ -1,7 +1,10 @@
 package co.com.banco.falabella.pages;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FalabellaPayBagPage {
 
@@ -11,7 +14,7 @@ public class FalabellaPayBagPage {
     this.driver = driver;
   }
 
-  private By btnGoBy= By.xpath("//div[@class='fb-order-status__cta']");
+  private By btnGoBuy = By.xpath("//div[@class='fb-order-status__cta']");
   private By lstInsuranceCoverage= By.xpath("//*[@class='fb-warranty-dropdown fb-inline-dropdown__link js-inline-dropdown__link']");
   private By optionInsuranceCoverage= By.xpath("//*[@class='fb-inline-dropdown__item-link' and contains(text(),'{0}')]");
 
@@ -25,7 +28,8 @@ public class FalabellaPayBagPage {
  }
 
  public FalabellaDispatchPage GoToDispach(){
-   driver.findElement(btnGoBy).click();
+   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+   wait.until(ExpectedConditions.elementToBeClickable(btnGoBuy)).click();
    return new FalabellaDispatchPage(driver);
  }
 

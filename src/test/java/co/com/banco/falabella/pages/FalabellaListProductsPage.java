@@ -18,7 +18,7 @@ public class FalabellaListProductsPage {
       "//div[contains(@class,'search-results-list')]//b[contains(text(),'{0}')]/ancestor::div[contains(@class,'search-results-list')]//a//div[contains(@class,'pod-action')]");
   private By btnSeePayBagShopping = By.id("linkButton");
 
-  public FalabellaPayBagPage selectProduct(String product) {
+  public FalabellaListProductsPage selectProduct(String product) {
     By article = By.xpath(
         "//div[contains(@class,'search-results-list')]//b[contains(text(), '"
             + product + "')]");
@@ -27,7 +27,7 @@ public class FalabellaListProductsPage {
     }
     clicBtnAddBag(product);
 
-    return new FalabellaPayBagPage(driver);
+    return new FalabellaListProductsPage(driver);
   }
 
   private FalabellaListProductsPage clicBtnAddBag(String product) {
@@ -38,6 +38,12 @@ public class FalabellaListProductsPage {
     driver.findElement(article).click();
     return new FalabellaListProductsPage(driver);
 
+  }
+
+
+  public FalabellaPayBagPage GoToBagPayShopping(){
+    driver.findElement(btnSeePayBagShopping).click();
+    return new FalabellaPayBagPage(driver);
   }
 
 }
