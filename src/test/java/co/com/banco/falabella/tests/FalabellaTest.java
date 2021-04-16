@@ -4,9 +4,12 @@ import co.com.banco.falabella.models.CellPhoneSummaryOrder;
 import co.com.banco.falabella.pages.FalabellaDispatchPage;
 import co.com.banco.falabella.pages.GoogleHomePage;
 import co.com.banco.falabella.utils.enums.EnumUrls;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import org.testng.reporters.TestHTMLReporter;
 
+@Listeners(TestHTMLReporter.class)
 public class FalabellaTest extends Hook {
 
   @Test

@@ -3,17 +3,17 @@ package co.com.banco.falabella.tests;
 import co.com.banco.falabella.utils.ReadFilePropierties;
 import java.io.IOException;
 import java.time.Duration;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 public class Hook {
 
   protected WebDriver driver;
 
-  @Before
+  @BeforeTest
   public void setup() throws IOException {
     String PATH_FILE = "./src/test/resources/file_configuration.properties";
     ReadFilePropierties fileProperties = new ReadFilePropierties();
@@ -27,7 +27,7 @@ public class Hook {
         Duration.ofSeconds(Integer.parseInt(fileProperties.getProperty("IMPLICIT_WAIT"))));
   }
 
-  @After
+  @AfterTest
   public void closeNavigate() {
     driver.close();
   }
