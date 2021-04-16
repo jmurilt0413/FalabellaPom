@@ -36,8 +36,7 @@ public class FalabellaDispatchPage {
         driver.findElement(lblBrandCellPhone).getText(),
         driver.findElement(lblQuantityProducts).getText().replace("(", "")
             .replace(")", ""),
-        driver.findElement(lblProductCode).getText().replace("digo: ",""),
+        driver.findElement(lblProductCode).getText().replace("Código: ", ""),
         driver.findElement(lblTotalItemPrice).getText().replace("$", ""));
   }
-
 }

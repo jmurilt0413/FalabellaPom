@@ -13,6 +13,7 @@ public enum EnumUrls {
     this.namePage = namePage;
     this.url = url;
   }
+
   private final String namePage;
   private final String url;
   private static final Map<String, String> mapUrl = Collections
@@ -20,6 +21,7 @@ public enum EnumUrls {
 
   /**
    * Here goes JavaDoc
+   *
    * @param namePage
    * @return
    */
@@ -32,12 +34,13 @@ public enum EnumUrls {
 
   /**
    * Here goes JavaDoc
+   *
    * @return
    */
   private static Map<String, String> initializeMapping() {
     Map<String, String> mapUrl = new HashMap<>();
     for (EnumUrls pagina : EnumUrls.values()) {
-      mapUrl.put(pagina.namePage,pagina.url );
+      mapUrl.put(pagina.namePage, pagina.url);
     }
     return mapUrl;
   }

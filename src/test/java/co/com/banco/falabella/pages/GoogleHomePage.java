@@ -11,7 +11,6 @@ public class GoogleHomePage {
   }
 
   protected WebDriver driver;
-
   private By txtGoogleSearch = By.xpath("//*[@title='Buscar']");
   private By linkFalabella = By.xpath("//*[@href='https://www.falabella.com.co/falabella-co/']");
 

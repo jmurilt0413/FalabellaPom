@@ -12,9 +12,7 @@ public class ReadFilePropierties {
     propiedades.load(new FileInputStream(directorio));
   }
 
-  public String getProperty(String propiedad){
+  public String getProperty(String propiedad) {
     return propiedades.getProperty(propiedad);
-
   }
-
 }

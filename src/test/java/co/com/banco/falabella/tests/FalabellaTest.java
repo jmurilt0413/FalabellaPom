@@ -1,7 +1,5 @@
 package co.com.banco.falabella.tests;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import co.com.banco.falabella.models.CellPhoneSummaryOrder;
 import co.com.banco.falabella.pages.FalabellaDispatchPage;
 import co.com.banco.falabella.pages.GoogleHomePage;
@@ -38,26 +36,22 @@ public class FalabellaTest {
   @Test
   public void ValidationOrderSummary() {
     CellPhoneSummaryOrder articleInitial = new CellPhoneSummaryOrder(
-        "Celular Xiaomi Redmi Note 8 128GB", "XIAOMY", "1",
+        "Celular Xiaomi Redmi Note 8 128GB", "XIAOMI", "1",
         "4919209", "749.800");
     GoogleHomePage googleHomePage = new GoogleHomePage(driver);
     FalabellaDispatchPage falabellaDispatchPage = new FalabellaDispatchPage(driver);
-
     driver.get(EnumUrls.getUrl("Google"));
     googleHomePage.searchPage("Falabella").selectPageFalabella().closeAd().closeAlertRegistry()
         .searchArticle("Celulares").selectProduct("Celular Xiaomi Redmi Note 8 128GB")
         .GoToBagPayShopping()
         .selectInsuranceCoverage("Asegura tu Pantalla").GoToDispach();
-
-    System.out.println(falabellaDispatchPage.buildObjectCellPhone().toString());
-    System.out.println(articleInitial.toString());
-
-    Assert.assertThat(falabellaDispatchPage.buildObjectCellPhone(), is(articleInitial));
+    Assert.assertEquals(articleInitial.toString(),
+        falabellaDispatchPage.buildObjectCellPhone().toString());
 
   }
 
   @After
-  public void closeNavigate(){
+  public void closeNavigate() {
     driver.close();
   }
 

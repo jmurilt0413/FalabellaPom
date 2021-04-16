@@ -40,10 +40,8 @@ public class FalabellaListProductsPage {
 
   }
 
-
-  public FalabellaPayBagPage GoToBagPayShopping(){
+  public FalabellaPayBagPage GoToBagPayShopping() {
     driver.findElement(btnSeePayBagShopping).click();
     return new FalabellaPayBagPage(driver);
   }
-
 }
