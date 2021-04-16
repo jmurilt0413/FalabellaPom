@@ -8,11 +8,11 @@ public class ReadFilePropierties {
 
   protected Properties propiedades = new Properties();
 
-  public void cargarArchivo(String directorio) throws IOException {
+  public void loadFile(String directorio) throws IOException {
     propiedades.load(new FileInputStream(directorio));
   }
 
-  public String obtenerPropiedad(String propiedad){
+  public String getProperty(String propiedad){
     return propiedades.getProperty(propiedad);
 
   }
